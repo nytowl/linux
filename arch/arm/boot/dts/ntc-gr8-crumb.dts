@@ -213,6 +213,20 @@
 		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
 		allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
 	};
+
+	spi2_pins_a: spi2@0 {
+		allwinner,pins = "PE1", "PE2", "PE3";
+		allwinner,function = "spi2";
+		allwinner,drive = <0>;
+		allwinner,pull = <0>;
+	};
+
+	spi2_cs0_pins_a: spi2-cs0@0 {
+		allwinner,pins = "PE0";
+		allwinner,function = "spi2";
+		allwinner,drive = <0>;
+		allwinner,pull = <0>;
+	};
 };
 
 &pwm {
@@ -256,6 +270,20 @@
 	regulator-min-microvolt = <3300000>;
 	regulator-max-microvolt = <3300000>;
 	regulator-name = "vcc-wifi-2";
+};
+
+&spi2 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&spi2_pins_a>, <&spi2_cs0_pins_a>;
+
+	spi2_0 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		compatible = "spidev";
+		reg = <0>;
+		spi-max-frequency = <50000000>;
+	};
 };
 
 &uart1 {
