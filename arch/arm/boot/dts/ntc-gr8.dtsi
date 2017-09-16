@@ -869,7 +869,7 @@
 			};
 
 			uart1_pins_a: uart1@1 {
-				allwinner,pins = "PG3", "PG4";
+				allwinner,pins = "PE10", "PE11";
 				allwinner,function = "uart1";
 				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
 				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
